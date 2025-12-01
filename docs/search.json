@@ -1,0 +1,214 @@
+[
+  {
+    "objectID": "irrigslides.html#the-fundamental-question",
+    "href": "irrigslides.html#the-fundamental-question",
+    "title": "Precision Approaches to Irrigation Scheduling",
+    "section": "The Fundamental Question",
+    "text": "The Fundamental Question\nAt the heart of every irrigation decision lies a deceptively simple question:\n\n“How much water should I apply, and when?”\n\n\nWhile a farmer might answer this based on experience, a digital module approaches this as a control theory problem.\nObjective: Maintain Soil Moisture Deficit (SMD) within a safe “operating window” to maximize growth and minimize waste.",
+    "crumbs": [
+      "Content",
+      "Precision Approaches to Irrigation Scheduling"
+    ]
+  },
+  {
+    "objectID": "irrigslides.html#why-irrigation-is-measured-in-millimetres-mm",
+    "href": "irrigslides.html#why-irrigation-is-measured-in-millimetres-mm",
+    "title": "Precision Approaches to Irrigation Scheduling",
+    "section": "Why Irrigation Is Measured in Millimetres (mm)",
+    "text": "Why Irrigation Is Measured in Millimetres (mm)\n\n\nIrrigation depth (mm) = how deep a uniform layer of water would be if spread across the soil surface.\n\n1 mm = 1 litre per m²\n\nWorks for any field size and matches rainfall, crop water use (ET), and soil water balance",
+    "crumbs": [
+      "Content",
+      "Precision Approaches to Irrigation Scheduling"
+    ]
+  },
+  {
+    "objectID": "irrigslides.html#soil-moisture-deficit-smd",
+    "href": "irrigslides.html#soil-moisture-deficit-smd",
+    "title": "Precision Approaches to Irrigation Scheduling",
+    "section": "Soil Moisture Deficit (SMD)",
+    "text": "Soil Moisture Deficit (SMD)\n\n\nSoil Moisture Deficit (mm) =\nthe amount of water needed to refill the root zone back to field capacity.\n\nDescribes how short the soil is of water\n\nExpressed in mm so it matches irrigation depth\n\n\nIrrigation aims to replace the deficit — not exceed it.",
+    "crumbs": [
+      "Content",
+      "Precision Approaches to Irrigation Scheduling"
+    ]
+  },
+  {
+    "objectID": "irrigslides.html#precision-ag-target-smd",
+    "href": "irrigslides.html#precision-ag-target-smd",
+    "title": "Precision Approaches to Irrigation Scheduling",
+    "section": "Precision Ag target: SMD",
+    "text": "Precision Ag target: SMD\nTo control the system, we track the Soil Moisture Deficit (SMD) day-by-day.\n\\[ SMD_{today} = SMD_{yesterday} + ET_{crop} - (Precipitation + Irrigation) + Drainage \\]\n\n\nGains (Water In) - \\(Precipitation\\): Rain - \\(Irrigation\\): Control Input\n\nLosses (Water Out) - \\(ET_{crop}\\): Evapotranspiration - \\(Drainage\\): Runoff below root zone",
+    "crumbs": [
+      "Content",
+      "Precision Approaches to Irrigation Scheduling"
+    ]
+  },
+  {
+    "objectID": "irrigslides.html#data-sources-for-smd",
+    "href": "irrigslides.html#data-sources-for-smd",
+    "title": "Precision Approaches to Irrigation Scheduling",
+    "section": "Data sources for SMD",
+    "text": "Data sources for SMD\nTo resolve the Water Balance Equation, we fuse multiple data sources.\n1. The Outflow: \\(ET_{crop}\\)\n\\[ ET_{crop} = ET_0 \\times K_c \\]\n\n\\(ET_0\\) (Atmospheric Demand):\n\nSource: Space-borne Weather Data (NASA LaRC, Meteomatics).\nData: Solar radiation, temperature, wind.\n\n\\(K_c\\) (Crop Coefficient):\n\nSource: Earth Observation Satellites (Sentinel-2, Planet).\nData: Spectral imagery \\(\\rightarrow\\) Canopy Cover \\(\\rightarrow\\) \\(K_c\\).",
+    "crumbs": [
+      "Content",
+      "Precision Approaches to Irrigation Scheduling"
+    ]
+  },
+  {
+    "objectID": "irrigslides.html#source-space-borne-weather-data",
+    "href": "irrigslides.html#source-space-borne-weather-data",
+    "title": "Precision Approaches to Irrigation Scheduling",
+    "section": "Source: Space-borne Weather Data",
+    "text": "Source: Space-borne Weather Data",
+    "crumbs": [
+      "Content",
+      "Precision Approaches to Irrigation Scheduling"
+    ]
+  },
+  {
+    "objectID": "irrigslides.html#satellite-data",
+    "href": "irrigslides.html#satellite-data",
+    "title": "Precision Approaches to Irrigation Scheduling",
+    "section": "Satellite Data",
+    "text": "Satellite Data",
+    "crumbs": [
+      "Content",
+      "Precision Approaches to Irrigation Scheduling"
+    ]
+  },
+  {
+    "objectID": "irrigslides.html#more-inputs-soil-forecasts",
+    "href": "irrigslides.html#more-inputs-soil-forecasts",
+    "title": "Precision Approaches to Irrigation Scheduling",
+    "section": "More Inputs: Soil & Forecasts",
+    "text": "More Inputs: Soil & Forecasts",
+    "crumbs": [
+      "Content",
+      "Precision Approaches to Irrigation Scheduling"
+    ]
+  },
+  {
+    "objectID": "irrigslides.html#the-bucket-size-soil-properties",
+    "href": "irrigslides.html#the-bucket-size-soil-properties",
+    "title": "Precision Approaches to Irrigation Scheduling",
+    "section": "2. The Bucket Size: Soil Properties",
+    "text": "2. The Bucket Size: Soil Properties\n\nSource: Digital Soil Maps.\nFunction: Defines the physics of the “bucket”.\n\nField Capacity: Full (\\(SMD = 0\\)).\nCritical Point: Stress threshold.",
+    "crumbs": [
+      "Content",
+      "Precision Approaches to Irrigation Scheduling"
+    ]
+  },
+  {
+    "objectID": "irrigslides.html#soil-data",
+    "href": "irrigslides.html#soil-data",
+    "title": "Precision Approaches to Irrigation Scheduling",
+    "section": "Soil Data",
+    "text": "Soil Data",
+    "crumbs": [
+      "Content",
+      "Precision Approaches to Irrigation Scheduling"
+    ]
+  },
+  {
+    "objectID": "irrigslides.html#forecasting-machine-learning",
+    "href": "irrigslides.html#forecasting-machine-learning",
+    "title": "Precision Approaches to Irrigation Scheduling",
+    "section": "3. Forecasting: Machine Learning",
+    "text": "3. Forecasting: Machine Learning\n\nProblem: Scheduling is inherently a forecasting problem. We can’t drive looking only in the rearview mirror.\nSolution: Gradient boosters and other ML.\nLogic: Compares current satellite growth curve to historical library to forecast crop canopy expansion for the next 10 days.\nLogic: For weather, we use forecasters like meteomatic",
+    "crumbs": [
+      "Content",
+      "Precision Approaches to Irrigation Scheduling"
+    ]
+  },
+  {
+    "objectID": "irrigslides.html#simulation-the-water-balance-table",
+    "href": "irrigslides.html#simulation-the-water-balance-table",
+    "title": "Precision Approaches to Irrigation Scheduling",
+    "section": "Simulation: The Water Balance Table",
+    "text": "Simulation: The Water Balance Table\nThe system integrates these inputs to simulate the field state.\n\n\n\nDay\n\\(K_c\\)\n\\(ET_{crop}\\)\nRain\nIrrigation\nSMD\nStatus\n\n\n\n\nMon\n0.40\n1.6\n0\n0\n20.0\nOK\n\n\nTue\n0.42\n1.9\n0\n0\n21.9\nOK\n\n\nWed\n0.45\n2.2\n0\n0\n24.1\nOK\n\n\nThu\n0.47\n2.2\n0\n25.0\n1.4\nRefilled\n\n\nFri\n0.50\n1.5\n10.0\n0\n0.0\nDrainage\n\n\n\nNote: Thursday’s irrigation refilled the profile, but Friday’s rain caused waste (Drainage).",
+    "crumbs": [
+      "Content",
+      "Precision Approaches to Irrigation Scheduling"
+    ]
+  },
+  {
+    "objectID": "irrigslides.html#the-scheduling-solution",
+    "href": "irrigslides.html#the-scheduling-solution",
+    "title": "Precision Approaches to Irrigation Scheduling",
+    "section": "The Scheduling Solution",
+    "text": "The Scheduling Solution\nThe core task is to optimize the “Irrigation” column for the next 7-14 days.\nA Multidimensional Search Space\nThere are millions of permutations.\n\n20mm on Tuesday?\n10mm on Tuesday + 10mm Friday?",
+    "crumbs": [
+      "Content",
+      "Precision Approaches to Irrigation Scheduling"
+    ]
+  },
+  {
+    "objectID": "irrigslides.html#management-constraints",
+    "href": "irrigslides.html#management-constraints",
+    "title": "Precision Approaches to Irrigation Scheduling",
+    "section": "Management Constraints",
+    "text": "Management Constraints\nThe optimizer must obey physical reality:\n\nMin Application: e.g., Gun cannot move fast enough for &lt;10mm.\nMax Application: e.g., &gt;30mm causes runoff.\nReturn Period: Equipment cycle time (e.g., 4 days).",
+    "crumbs": [
+      "Content",
+      "Precision Approaches to Irrigation Scheduling"
+    ]
+  },
+  {
+    "objectID": "irrigslides.html#the-solver-brute-force-optimization",
+    "href": "irrigslides.html#the-solver-brute-force-optimization",
+    "title": "Precision Approaches to Irrigation Scheduling",
+    "section": "The Solver: Brute Force Optimization",
+    "text": "The Solver: Brute Force Optimization\nThe module employs a constrained search strategy:\n\nGenerate Permutations:\n\nMathematically generate all valid schedules obeying return periods.\n\nSimulate:\n\nRun the Water Balance model for every schedule.\n\nScore & Select:\n\nDisqualify: Stress (\\(SMD &gt; Critical\\)).\nPenalize: Waste (\\(Drainage &gt; 0\\)).\nRank: Minimize total water use.",
+    "crumbs": [
+      "Content",
+      "Precision Approaches to Irrigation Scheduling"
+    ]
+  },
+  {
+    "objectID": "irrigslides.html#challenges-and-complexity",
+    "href": "irrigslides.html#challenges-and-complexity",
+    "title": "Precision Approaches to Irrigation Scheduling",
+    "section": "Challenges and Complexity",
+    "text": "Challenges and Complexity\n1. Non-Uniqueness\n\nIssue: 20mm on Tue vs 22mm on Wed often yields same growth.\nSolution: Secondary logic (Operational Efficiency, “Latest Permissible Start”).\n\n2. Computational Explosion\n\nIssue: Permutations grow exponentially with forecast length.\nSolution: Pruning (discarding bad branches early) or Genetic Algorithms.\n\n3. Uncertainty\n\nIssue: Forecast says “No Rain”, but it rains \\(\\rightarrow\\) Waste.\nSolution: Dynamic Loop. Re-run daily with fresh satellite/weather data.",
+    "crumbs": [
+      "Content",
+      "Precision Approaches to Irrigation Scheduling"
+    ]
+  },
+  {
+    "objectID": "irrigslides.html#final-product",
+    "href": "irrigslides.html#final-product",
+    "title": "Precision Approaches to Irrigation Scheduling",
+    "section": "Final product",
+    "text": "Final product\nA Totally Autonomous Precision Irrigation System\n\n\n\n\n\nflowchart LR\n    %% Node Styles\n    classDef inputStyle fill:#e3f2fd,stroke:#2196f3,stroke-width:2px,color:#0d47a1,width:100px,height:50px,font-size:16px;\n    classDef autoStyle fill:#fff3e0,stroke:#ff9800,stroke-width:2px,color:#e65100,width:250px,height:100px,font-size:16px;\n    classDef engineStyle fill:#e8f5e9,stroke:#4caf50,stroke-width:2px,color:#1b5e20,width:150px,height:50px,font-size:16px;\n    classDef outputStyle fill:#f3e5f5,stroke:#9c27b0,stroke-width:2px,color:#4a148c,width:85px,height:50px,font-size:16px;\n    classDef spacerStyle width:225px,height:0px,fill:none,stroke:none;\n\n    subgraph Inputs [\"Input....\"]\n        direction TB\n        A[GPS Coords]:::inputStyle\n        B[Field Bounds]:::inputStyle\n        C[Emerg Date]:::inputStyle\n    end\n\n    subgraph Auto [\"Data....\"]\n        direction TB\n        D[(\"🛰️ Satellite\")]:::autoStyle\n        E[(\"🌍 Soil Data\")]:::autoStyle\n        F[(\"🌦️ Weather\")]:::autoStyle\n    end\n\n    subgraph Engine [\"Core....\"]\n        G{Irrig Engine}:::engineStyle\n    end\n\n    subgraph Output [\"Output....\"]\n        direction TB\n        H[&gt; Schedule]:::outputStyle\n        I[&gt; Maps]:::outputStyle\n        %% Invisible node to force width\n        OutputSpacer[ ]:::spacerStyle\n    end\n\n    A & B & C --&gt; G\n    D --&gt; G\n    E --&gt; G\n    F --&gt; G\n    \n    G --&gt; H\n    G -.-&gt; I\n\n    %% Subgraph Styling\n    style Inputs fill:#f0f4f8,stroke:#90a4ae,stroke-width:2px,color:#37474f,rx:10,ry:10\n    style Auto fill:#f0f4f8,stroke:#90a4ae,stroke-width:2px,color:#37474f,rx:10,ry:10\n    style Engine fill:#f0f4f8,stroke:#90a4ae,stroke-width:2px,color:#37474f,rx:10,ry:10\n    style Output fill:#f0f4f8,stroke:#90a4ae,stroke-width:2px,color:#37474f,rx:10,ry:10",
+    "crumbs": [
+      "Content",
+      "Precision Approaches to Irrigation Scheduling"
+    ]
+  },
+  {
+    "objectID": "game.html",
+    "href": "game.html",
+    "title": "Irrigation Master",
+    "section": "",
+    "text": "Manual vs automated scheduling\n    \n\n\n\n\n    \n    \n    \n        Manual vs automated scheduling\n        \n            Can you beat the AI optimizer? Configure your field conditions and try to maintain the perfect Soil Moisture Deficit (SMD).\n        \n\n        \n            \n                Field Parameters\n                \n                    Initial SMD (mm):\n                    \n                \n                \n                    Critical SMD (Stress Point) (mm):\n                    \n                \n                \n                    Field Capacity (Max SMD) (mm):\n                    \n                \n                \n                    Yield Loss per Stress Unit (%):\n                    \n                \n            \n            \n                Operational Constraints\n                \n                    Min Application (mm):\n                    \n                \n                \n                    Max Application (mm):\n                    \n                \n                \n                    Return Period (days):\n                    \n                \n                \n                    Simulation Days:\n                    \n                \n            \n        \n\n        Start Simulation\n    \n\n    \n    \n        \n            \n            \n            🚿\n            \n                \n            \n        \n\n        \n            \n                Day 1\n                Current Day\n            \n            \n                10 mm\n                Soil Moisture Deficit (Target: &lt; 35)\n                \n                    Dry \n                     \n                    Wet\n                \n            \n            \n                0%\n                Accumulated Yield Loss\n            \n        \n\n        \n            Forecast (Rain Only)\n            \n        \n\n        \n            \n                \n                Return Period Active: Cannot Irrigate Today\n                \n                    Irrigation Amount:\n                    0 mm\n                    \n                \n                Confirm Decision\n            \n        \n    \n\n    \n    \n        Simulation Complete\n        \n        \n            \n                Your Performance\n                Total Water Used:  mm\n                Number of Events: \n                Total Drainage (Waste):  mm\n                Yield Loss:  %\n            \n            \n                AI Scheduler (Optimal)\n                Total Water Used:  mm\n                Number of Events: \n                Total Drainage (Waste):  mm\n                Yield Loss:  %\n            \n        \n\n        Day-by-Day Comparison\n        \n\n\n\nDay\nConditions\nYou (Irrig/SMD)\nOutcome (You)\nAI (Irrig/SMD)\nOutcome (AI)\n\n\n\n\n\n\n\n        Play Again",
+    "crumbs": [
+      "Content",
+      "Irrigation Master"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Home",
+    "section": "",
+    "text": "Precision farming\nWelcome to the GitHub webpage for Dr K.J. Mhango’s section of this module. Here you will find lecture notes and teaching materials for all your reading needs, as well as supporting resources.\n👉 Navigate the topics in order using the panel on the left.\nThis space brings together:\n\nLecture notes and readings\nPractical guides and tutorials\nLinks to external content\n\nUse these resources to work through the content step by step and reinforce your learning.\nFor any queries, contact Joseph Mhango."
+  },
+  {
+    "objectID": "index.html#c7021hf-precision-farming",
+    "href": "index.html#c7021hf-precision-farming",
+    "title": "Home",
+    "section": "",
+    "text": "Precision farming\nWelcome to the GitHub webpage for Dr K.J. Mhango’s section of this module. Here you will find lecture notes and teaching materials for all your reading needs, as well as supporting resources.\n👉 Navigate the topics in order using the panel on the left.\nThis space brings together:\n\nLecture notes and readings\nPractical guides and tutorials\nLinks to external content\n\nUse these resources to work through the content step by step and reinforce your learning.\nFor any queries, contact Joseph Mhango."
+  }
+]

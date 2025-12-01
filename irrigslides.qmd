@@ -1,0 +1,268 @@
+---
+title: "Precision Approaches to Irrigation Scheduling"
+subtitle: "Leveraging Remote Sensing for Water Balance Monitoring and Decision Support"
+author: "Dr K.J. Mhango"
+css: scroll.css
+format:
+  revealjs:
+    theme: simple
+    slide-number: true
+    toc: true
+    toc-depth: 2
+    incremental: false
+    code-line-numbers: false
+    chalkboard: true
+    code-fold: false
+    code-tools: true
+    scrollable: true
+execute:
+  echo: true
+  warning: false
+  message: false
+editor: visual
+---
+
+## The Fundamental Question {background-color="#e3f2fd"}
+
+At the heart of every irrigation decision lies a deceptively simple question:
+
+::: {.r-fit-text}
+**"How much water should I apply, and when?"**
+:::
+
+. . .
+
+While a farmer might answer this based on experience, a digital module approaches this as a **control theory problem**.
+
+**Objective:** Maintain **Soil Moisture Deficit (SMD)** within a safe "operating window" to maximize growth and minimize waste.
+
+## Why Irrigation Is Measured in Millimetres (mm)
+
+::: {.columns}
+::: {.column width="55%"}
+
+**Irrigation depth (mm)** = how deep a uniform layer of water would be if spread across the soil surface.
+
+- 1 mm = 1 litre per m²  
+- Works for any field size and matches rainfall, crop water use (ET), and soil water balance
+
+
+:::
+
+::: {.column width="45%"}
+![](water.png){width="85%"}
+:::
+:::
+
+---
+
+## Soil Moisture Deficit (SMD)
+
+::: {.columns}
+::: {.column width="55%"}
+
+**Soil Moisture Deficit (mm)** =  
+the amount of water needed to refill the root zone back to field capacity.
+
+- Describes *how short* the soil is of water  
+- Expressed in mm so it matches irrigation depth  
+
+> Irrigation aims to replace the deficit — not exceed it.
+
+:::
+
+::: {.column width="45%"}
+![](waterbalance.png){width="85%"}
+:::
+:::
+
+---
+
+## Precision Ag target: SMD
+
+To control the system, we track the **Soil Moisture Deficit (SMD)** day-by-day.
+
+$$ SMD_{today} = SMD_{yesterday} + ET_{crop} - (Precipitation + Irrigation) + Drainage $$
+
+::: {.columns}
+::: {.column width="50%"}
+**Gains (Water In)**
+- $Precipitation$: Rain
+- $Irrigation$: Control Input
+:::
+
+::: {.column width="50%"}
+**Losses (Water Out)**
+- $ET_{crop}$: Evapotranspiration
+- $Drainage$: Runoff below root zone
+:::
+:::
+
+## Data sources for SMD
+
+To resolve the Water Balance Equation, we fuse multiple data sources.
+
+### 1. The Outflow: $ET_{crop}$
+$$ ET_{crop} = ET_0 \times K_c $$
+
+- **$ET_0$ (Atmospheric Demand)**:
+  - *Source*: **Space-borne Weather Data** (NASA LaRC, Meteomatics).
+  - *Data*: Solar radiation, temperature, wind.
+- **$K_c$ (Crop Coefficient)**:
+  - *Source*: **Earth Observation Satellites** (Sentinel-2, Planet).
+  - *Data*: Spectral imagery $\rightarrow$ Canopy Cover $\rightarrow$ $K_c$.
+
+## Source: Space-borne Weather Data
+
+<iframe src="https://power.larc.nasa.gov/parameters/" width="100%" height="600px" style="border: 2px solid #ccc; border-radius: 8px;"></iframe>
+
+## Satellite Data
+
+<iframe src="https://www.sentinel-hub.com/" width="100%" height="600px" style="border: 2px solid #ccc; border-radius: 8px;"></iframe>
+
+## More Inputs: Soil & Forecasts
+
+## 2. The Bucket Size: Soil Properties
+- *Source*: **Digital Soil Maps**.
+- *Function*: Defines the physics of the "bucket".
+  - **Field Capacity**: Full ($SMD = 0$).
+  - **Critical Point**: Stress threshold.
+
+## Soil Data
+
+<iframe src="https://isric.org/explore/soilgrids" width="100%" height="600px" style="border: 2px solid #ccc; border-radius: 8px;"></iframe>
+
+## 3. Forecasting: Machine Learning
+
+- *Problem*: Scheduling is inherently a forecasting problem. We can't drive looking only in the rearview mirror.
+- *Solution*: **Gradient boosters and other ML**.
+- *Logic*: Compares current satellite growth curve to historical library to forecast crop canopy expansion for the next 10 days.
+- *Logic*: For weather, we use forecasters like meteomatic
+
+::: {.full-width}
+![](groundcover.png){width="80%"}
+:::
+
+## Simulation: The Water Balance Table
+
+The system integrates these inputs to simulate the field state.
+
+| Day | $K_c$ | $ET_{crop}$ | Rain | **Irrigation** | SMD | Status |
+|:---|:---|:---|:---|:---|:---|:---|
+| **Mon** | 0.40 | 1.6 | 0 | **0** | 20.0 | OK |
+| **Tue** | 0.42 | 1.9 | 0 | **0** | 21.9 | OK |
+| **Wed** | 0.45 | 2.2 | 0 | **0** | 24.1 | OK |
+| **Thu** | 0.47 | 2.2 | 0 | **25.0** | 1.4 | **Refilled** |
+| **Fri** | 0.50 | 1.5 | 10.0 | **0** | 0.0 | *Drainage* |
+
+*Note: Thursday's irrigation refilled the profile, but Friday's rain caused waste (Drainage).*
+
+## The Scheduling Solution
+
+The core task is to optimize the **"Irrigation"** column for the next 7-14 days.
+
+### A Multidimensional Search Space
+There are millions of permutations.
+
+- 20mm on Tuesday?
+
+- 10mm on Tuesday + 10mm Friday?
+
+## Management Constraints
+
+The optimizer must obey physical reality:
+
+1.  **Min Application**: e.g., Gun cannot move fast enough for <10mm.
+
+2.  **Max Application**: e.g., >30mm causes runoff.
+
+3.  **Return Period**: Equipment cycle time (e.g., 4 days).
+
+::: {.full-width}
+![](raingun.png){width="80%"}
+:::
+
+
+## The Solver: Brute Force Optimization
+
+The module employs a **constrained search strategy**:
+
+1.  **Generate Permutations**:
+    - Mathematically generate all *valid* schedules obeying return periods.
+2.  **Simulate**:
+    - Run the Water Balance model for *every* schedule.
+3.  **Score & Select**:
+    - **Disqualify**: Stress ($SMD > Critical$).
+    - **Penalize**: Waste ($Drainage > 0$).
+    - **Rank**: Minimize total water use.
+
+## Challenges and Complexity
+
+### 1. Non-Uniqueness
+- *Issue*: 20mm on Tue vs 22mm on Wed often yields same growth.
+- *Solution*: Secondary logic (Operational Efficiency, "Latest Permissible Start").
+
+### 2. Computational Explosion
+- *Issue*: Permutations grow exponentially with forecast length.
+- *Solution*: **Pruning** (discarding bad branches early) or **Genetic Algorithms**.
+
+### 3. Uncertainty
+- *Issue*: Forecast says "No Rain", but it rains $\rightarrow$ Waste.
+- *Solution*: **Dynamic Loop**. Re-run daily with fresh satellite/weather data.
+
+## Final product
+
+**A Totally Autonomous Precision Irrigation System**
+
+```{mermaid}
+%%| echo: false
+flowchart LR
+    %% Node Styles
+    classDef inputStyle fill:#e3f2fd,stroke:#2196f3,stroke-width:2px,color:#0d47a1,width:100px,height:50px,font-size:16px;
+    classDef autoStyle fill:#fff3e0,stroke:#ff9800,stroke-width:2px,color:#e65100,width:250px,height:100px,font-size:16px;
+    classDef engineStyle fill:#e8f5e9,stroke:#4caf50,stroke-width:2px,color:#1b5e20,width:150px,height:50px,font-size:16px;
+    classDef outputStyle fill:#f3e5f5,stroke:#9c27b0,stroke-width:2px,color:#4a148c,width:85px,height:50px,font-size:16px;
+    classDef spacerStyle width:225px,height:0px,fill:none,stroke:none;
+
+    subgraph Inputs ["Input...."]
+        direction TB
+        A[GPS Coords]:::inputStyle
+        B[Field Bounds]:::inputStyle
+        C[Emerg Date]:::inputStyle
+    end
+
+    subgraph Auto ["Data...."]
+        direction TB
+        D[("🛰️ Satellite")]:::autoStyle
+        E[("🌍 Soil Data")]:::autoStyle
+        F[("🌦️ Weather")]:::autoStyle
+    end
+
+    subgraph Engine ["Core...."]
+        G{Irrig Engine}:::engineStyle
+    end
+
+    subgraph Output ["Output...."]
+        direction TB
+        H[> Schedule]:::outputStyle
+        I[> Maps]:::outputStyle
+        %% Invisible node to force width
+        OutputSpacer[ ]:::spacerStyle
+    end
+
+    A & B & C --> G
+    D --> G
+    E --> G
+    F --> G
+    
+    G --> H
+    G -.-> I
+
+    %% Subgraph Styling
+    style Inputs fill:#f0f4f8,stroke:#90a4ae,stroke-width:2px,color:#37474f,rx:10,ry:10
+    style Auto fill:#f0f4f8,stroke:#90a4ae,stroke-width:2px,color:#37474f,rx:10,ry:10
+    style Engine fill:#f0f4f8,stroke:#90a4ae,stroke-width:2px,color:#37474f,rx:10,ry:10
+    style Output fill:#f0f4f8,stroke:#90a4ae,stroke-width:2px,color:#37474f,rx:10,ry:10
+```
+
+

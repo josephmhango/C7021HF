@@ -1,0 +1,1667 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Irrigation Master – C7021HF Precision farming</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./img/pf.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./irrigslides.html">Content</a></li><li class="breadcrumb-item"><a href="./game.html">Irrigation Master</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./img/pf.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Content</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./irrigslides.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Precision Approaches to Irrigation Scheduling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./game.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Irrigation Master</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./irrigslides.html">Content</a></li><li class="breadcrumb-item"><a href="./game.html">Irrigation Master</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Irrigation Master</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div id="legacy-html">
+
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual vs automated scheduling</title>
+    <style>
+        :root {
+            --soil-dark: #3e2723;
+            --soil-light: #795548;
+            --crop-green: #2e7d32;
+            --sky-blue: #e3f2fd;
+            --water-blue: #2196f3;
+            --sun-yellow: #fdd835;
+            --danger-red: #e57373;
+            --safe-green: #81c784;
+            --dry-orange: #ffb74d;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+        }
+
+        #game-container {
+            width: 900px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Screens */
+        .screen {
+            padding: 30px;
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        .screen.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        /* Setup Form */
+        .form-group {
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        label {
+            font-weight: 600;
+        }
+
+        input[type="number"] {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 80px;
+        }
+
+        button.primary-btn {
+            background-color: var(--water-blue);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-size: 1.1em;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+            transition: background 0.2s;
+        }
+
+        button.primary-btn:hover {
+            background-color: #1976d2;
+        }
+
+        /* Game UI */
+        #visual-stage {
+            height: 300px;
+            background: linear-gradient(to bottom, var(--sky-blue) 0%, #fff 80%, var(--soil-dark) 80%);
+            position: relative;
+            overflow: hidden;
+            border-bottom: 4px solid var(--soil-light);
+        }
+
+        /* Crops */
+        .crop-row {
+            position: absolute;
+            bottom: 20%; /* Top of soil */
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+        }
+
+        .plant {
+            width: 20px;
+            height: 60px;
+            background-color: var(--crop-green);
+            border-radius: 20px 20px 0 0;
+            position: relative;
+            transform-origin: bottom center;
+            animation: sway 3s infinite ease-in-out;
+        }
+
+        .plant::before, .plant::after {
+            content: '';
+            position: absolute;
+            background-color: var(--crop-green);
+            border-radius: 50%;
+        }
+        
+        /* Leaves */
+        .plant::before { width: 20px; height: 10px; left: -15px; top: 20px; border-radius: 100% 0 0 0; transform: rotate(-10deg); }
+        .plant::after { width: 20px; height: 10px; right: -15px; top: 25px; border-radius: 0 100% 0 0; transform: rotate(10deg); }
+
+        @keyframes sway {
+            0%, 100% { transform: rotate(2deg); }
+            50% { transform: rotate(-2deg); }
+        }
+
+        /* Weather Elements */
+        .sun {
+            width: 60px;
+            height: 60px;
+            background: var(--sun-yellow);
+            border-radius: 50%;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            box-shadow: 0 0 40px var(--sun-yellow);
+            transition: opacity 1s;
+        }
+
+        .rain-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 20%;
+            pointer-events: none;
+            display: none;
+        }
+
+        .rain-drop {
+            position: absolute;
+            width: 2px;
+            height: 15px;
+            background: var(--water-blue);
+            animation: rain 0.5s linear infinite;
+        }
+
+        @keyframes rain {
+            from { transform: translateY(-20px); }
+            to { transform: translateY(300px); }
+        }
+
+        /* Watering Can */
+        #watering-can {
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            font-size: 80px;
+            display: none;
+            z-index: 10;
+            transform-origin: top left;
+        }
+
+        @keyframes pour {
+            0% { transform: rotate(0deg) translate(0, 0); opacity: 1;}
+            20% { transform: rotate(-30deg) translate(-20px, 10px); }
+            80% { transform: rotate(-30deg) translate(-20px, 10px); opacity: 1;}
+            100% { transform: rotate(0deg) translate(0, 0); opacity: 0;}
+        }
+
+        /* Dashboard */
+        #dashboard {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+        }
+
+        .stat-box {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: var(--water-blue);
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        #forecast-strip {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding-bottom: 5px;
+        }
+
+        .forecast-day {
+            min-width: 70px;
+            background: white;
+            border: 1px solid #eee;
+            border-radius: 6px;
+            padding: 8px;
+            text-align: center;
+            font-size: 0.8em;
+        }
+
+        .forecast-day.current {
+            border: 2px solid var(--water-blue);
+            background: #e3f2fd;
+        }
+
+        /* Controls */
+        #controls {
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid #eee;
+        }
+
+        .slider-container {
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        #irrigation-amount {
+            width: 200px;
+        }
+
+        /* Results */
+        .results-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .result-card {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 0.9em;
+        }
+
+        .comparison-table th, .comparison-table td {
+            padding: 8px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        .comparison-table th {
+            background-color: #eee;
+        }
+
+        /* Divergent Palette Classes */
+        .status-drought { background-color: #ffccbc !important; color: #bf360c; }
+        .status-perfect { background-color: #c8e6c9 !important; color: #1b5e20; }
+        .status-wet { background-color: #b3e5fc !important; color: #01579b; }
+        .status-flooded { background-color: #cfd8dc !important; color: #37474f; }
+
+        .hidden { visibility: hidden; }
+
+    </style>
+
+
+
+<div id="game-container">
+    
+    <!-- Screen 1: Setup -->
+    <div id="setup-screen" class="screen active">
+        <h1>Manual vs automated scheduling</h1>
+        <p style="text-align: center; color: #666; margin-bottom: 30px;">
+            Can you beat the AI optimizer? Configure your field conditions and try to maintain the perfect Soil Moisture Deficit (SMD).
+        </p>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+            <div>
+                <h3 class="anchored">Field Parameters</h3>
+                <div class="form-group">
+                    <label>Initial SMD (mm):</label>
+                    <input type="number" id="init-smd" value="10">
+                </div>
+                <div class="form-group">
+                    <label>Critical SMD (Stress Point) (mm):</label>
+                    <input type="number" id="crit-smd" value="35">
+                </div>
+                <div class="form-group">
+                    <label>Field Capacity (Max SMD) (mm):</label>
+                    <input type="number" id="max-smd" value="0" disabled="" title="Always 0">
+                </div>
+                <div class="form-group">
+                    <label>Yield Loss per Stress Unit (%):</label>
+                    <input type="number" id="yield-loss" value="0.5" step="0.1">
+                </div>
+            </div>
+            <div>
+                <h3 class="anchored">Operational Constraints</h3>
+                <div class="form-group">
+                    <label>Min Application (mm):</label>
+                    <input type="number" id="min-app" value="10">
+                </div>
+                <div class="form-group">
+                    <label>Max Application (mm):</label>
+                    <input type="number" id="max-app" value="30">
+                </div>
+                <div class="form-group">
+                    <label>Return Period (days):</label>
+                    <input type="number" id="return-period" value="3">
+                </div>
+                <div class="form-group">
+                    <label>Simulation Days:</label>
+                    <input type="number" id="sim-days" value="10" min="5" max="14">
+                </div>
+            </div>
+        </div>
+
+        <button class="primary-btn" onclick="game.start()">Start Simulation</button>
+    </div>
+
+    <!-- Screen 2: Game Loop -->
+    <div id="game-screen" class="screen">
+        <div id="visual-stage">
+            <div class="sun" id="sun"></div>
+            <div class="rain-overlay" id="rain-layer"></div>
+            <div id="watering-can">🚿</div>
+            <div class="crop-row" id="crop-row">
+                <!-- Plants injected by JS -->
+            </div>
+        </div>
+
+        <div id="dashboard">
+            <div class="stat-box">
+                <div class="stat-value" id="disp-day">Day 1</div>
+                <div class="stat-label">Current Day</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value" id="disp-smd">10 mm</div>
+                <div class="stat-label">Soil Moisture Deficit (Target: &lt; 35)</div>
+                <div style="font-size: 0.8em; margin-top: 5px;">
+                    <span style="color:red">Dry</span> 
+                    <input type="range" disabled="" value="30" min="0" max="50" id="smd-meter" style="width: 60%; vertical-align: middle;"> 
+                    <span style="color:blue">Wet</span>
+                </div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value" id="disp-loss">0%</div>
+                <div class="stat-label">Accumulated Yield Loss</div>
+            </div>
+        </div>
+
+        <div style="padding: 0 20px;">
+            <h4 class="anchored">Forecast (Rain Only)</h4>
+            <div id="forecast-strip"></div>
+        </div>
+
+        <div id="controls">
+            <div id="decision-panel">
+                <p id="todays-weather" style="font-weight: bold; margin-bottom: 10px; color: #2c3e50;"></p>
+                <p id="constraint-msg" style="color: #d32f2f; font-weight: bold; display: none;">Return Period Active: Cannot Irrigate Today</p>
+                <div class="slider-container" id="irrigation-inputs">
+                    <label>Irrigation Amount:</label>
+                    <span id="slider-val">0</span> mm
+                    <input type="range" id="irrigation-slider" min="0" max="30" step="1" value="0" oninput="game.updateSliderVal()">
+                </div>
+                <button class="primary-btn" onclick="game.commitDecision()" id="commit-btn">Confirm Decision</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Screen 3: Results -->
+    <div id="results-screen" class="screen">
+        <h2 class="anchored">Simulation Complete</h2>
+        
+        <div class="results-grid">
+            <div class="result-card">
+                <h3 class="anchored">Your Performance</h3>
+                <p>Total Water Used: <span id="p-water"></span> mm</p>
+                <p>Number of Events: <span id="p-events"></span></p>
+                <p>Total Drainage (Waste): <span id="p-drain"></span> mm</p>
+                <p>Yield Loss: <span id="p-yield"></span> %</p>
+            </div>
+            <div class="result-card" style="background-color: #e3f2fd;">
+                <h3 class="anchored">AI Scheduler (Optimal)</h3>
+                <p>Total Water Used: <span id="ai-water"></span> mm</p>
+                <p>Number of Events: <span id="ai-events"></span></p>
+                <p>Total Drainage (Waste): <span id="ai-drain"></span> mm</p>
+                <p>Yield Loss: <span id="ai-yield"></span> %</p>
+            </div>
+        </div>
+
+        <h3 class="anchored">Day-by-Day Comparison</h3>
+        
+<table class="comparison-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Day</th>
+<th data-quarto-table-cell-role="th">Conditions</th>
+<th data-quarto-table-cell-role="th">You (Irrig/SMD)</th>
+<th data-quarto-table-cell-role="th">Outcome (You)</th>
+<th data-quarto-table-cell-role="th">AI (Irrig/SMD)</th>
+<th data-quarto-table-cell-role="th">Outcome (AI)</th>
+</tr>
+</thead>
+<tbody id="results-table-body">
+</tbody>
+</table>
+
+
+        <button class="primary-btn" onclick="location.reload()">Play Again</button>
+    </div>
+
+</div>
+
+<script>
+/**
+ * Game Logic
+ */
+
+class WeatherSystem {
+    constructor(days) {
+        this.days = days;
+        this.forecast = [];
+        this.generateForecast();
+    }
+
+    generateForecast() {
+        for (let i = 0; i < this.days; i++) {
+            // Random weather generation
+            const isRain = Math.random() < 0.3; // 30% chance of rain
+            const rainAmount = isRain ? Math.floor(Math.random() * 15) + 2 : 0;
+            // ET0 varies inversely with rain roughly
+            const et0 = isRain ? (Math.random() * 2 + 1).toFixed(1) : (Math.random() * 3 + 3).toFixed(1);
+            
+            this.forecast.push({
+                day: i + 1,
+                rain: rainAmount,
+                et0: parseFloat(et0),
+                type: isRain ? 'Rainy' : 'Sunny'
+            });
+        }
+    }
+}
+
+class Optimizer {
+    constructor(config, forecast) {
+        this.config = config;
+        this.forecast = forecast;
+        this.bestSchedule = null;
+        this.minCost = Infinity;
+    }
+
+    solve() {
+        this.search([], 0);
+        return this.bestSchedule;
+    }
+
+    simulate(schedule) {
+        let smd = this.config.initialSmd;
+        let totalDrainage = 0;
+        let yieldLoss = 0;
+        let totalIrrigation = 0;
+        let numEvents = 0;
+        let lastIrrigDay = -999;
+
+        // Daily Step
+        for (let i = 0; i < this.forecast.length; i++) {
+            const weather = this.forecast[i];
+            const irrig = schedule[i] || 0;
+            
+            // Check Constraints
+            if (irrig > 0) {
+                if (i - lastIrrigDay < this.config.returnPeriod && lastIrrigDay !== -999) {
+                    return { valid: false }; // Violation
+                }
+                lastIrrigDay = i;
+                totalIrrigation += irrig;
+                numEvents++;
+            }
+
+            // Balance
+            // SMD_new = SMD_old + ET - Rain - Irrig
+            smd = smd + weather.et0 - weather.rain - irrig;
+
+            if (smd < 0) {
+                totalDrainage += Math.abs(smd);
+                smd = 0;
+            }
+
+            if (smd > this.config.criticalSmd) {
+                yieldLoss += (smd - this.config.criticalSmd) * this.config.yieldLossPerUnit;
+            }
+        }
+
+        // Score: Minimize Yield Loss (primary), then Drainage, then Water Use
+        const score = (yieldLoss * 1000) + (totalDrainage * 10) + (totalIrrigation * 1);
+        
+        return { valid: true, score, yieldLoss, totalDrainage, totalIrrigation, numEvents, schedule };
+    }
+
+    search() {
+        let schedule = new Array(this.forecast.length).fill(0);
+        let lastIrrig = -999;
+        
+        let smd = this.config.initialSmd;
+        
+        for(let i=0; i<this.forecast.length; i++) {
+             // Can we irrigate today?
+             if (i - lastIrrig >= this.config.returnPeriod || lastIrrig === -999) {
+                 // Look ahead 3 days
+                 let predictedSMD = smd;
+                 let needsWater = false;
+                 
+                 for(let j=0; j<Math.min(3, this.forecast.length - i); j++) {
+                     let w = this.forecast[i+j];
+                     predictedSMD += w.et0 - w.rain;
+                     if(predictedSMD > this.config.criticalSmd) {
+                         needsWater = true;
+                         break;
+                     }
+                 }
+                 
+                 if(needsWater) {
+                     // Target SMD = 5mm buffer
+                     let deficit = smd + this.forecast[i].et0; 
+                     // Constraint
+                     let amt = Math.min(this.config.maxApp, Math.max(this.config.minApp, deficit));
+                     if(deficit < this.config.minApp) amt = 0; // Too wet to justify min app
+                     
+                     if(amt > 0) {
+                         schedule[i] = Math.round(amt);
+                         lastIrrig = i;
+                     }
+                 }
+             }
+             
+             // Update SMD for next loop step
+             let applied = schedule[i];
+             smd = smd + this.forecast[i].et0 - this.forecast[i].rain - applied;
+             if(smd < 0) smd = 0;
+        }
+        
+        this.bestSchedule = this.simulate(schedule);
+    }
+}
+
+class Game {
+    constructor() {
+        this.day = 0;
+        this.smd = 0;
+        this.totalYieldLoss = 0;
+        this.history = [];
+        this.config = {};
+        this.forecast = [];
+        this.lastIrrigationDay = -999;
+        this.aiResult = null;
+        this.playerEvents = 0;
+    }
+
+    start() {
+        // Read config
+        this.config = {
+            initialSmd: parseFloat(document.getElementById('init-smd').value),
+            criticalSmd: parseFloat(document.getElementById('crit-smd').value),
+            yieldLossPerUnit: parseFloat(document.getElementById('yield-loss').value),
+            minApp: parseFloat(document.getElementById('min-app').value),
+            maxApp: parseFloat(document.getElementById('max-app').value),
+            returnPeriod: parseFloat(document.getElementById('return-period').value),
+            simDays: parseFloat(document.getElementById('sim-days').value)
+        };
+
+        // Init State
+        this.smd = this.config.initialSmd;
+        this.day = 0;
+        this.totalYieldLoss = 0;
+        this.history = [];
+        this.lastIrrigationDay = -999;
+        this.playerEvents = 0;
+
+        // Create Weather
+        const weatherSys = new WeatherSystem(this.config.simDays);
+        this.forecast = weatherSys.forecast;
+
+        // Run AI Solver
+        const ai = new Optimizer(this.config, this.forecast);
+        ai.search();
+        this.aiResult = ai.bestSchedule;
+
+        // Setup UI
+        this.setupVisuals();
+        this.switchScreen('game-screen');
+        this.updateDashboard();
+        
+        // Set slider limits
+        const slider = document.getElementById('irrigation-slider');
+        slider.min = 0; // Always allow 0
+        slider.max = this.config.maxApp;
+        
+        // Render initial constraints
+        this.checkConstraints();
+    }
+
+    setupVisuals() {
+        // Create crops
+        const row = document.getElementById('crop-row');
+        row.innerHTML = '';
+        for(let i=0; i<15; i++) {
+            const p = document.createElement('div');
+            p.className = 'plant';
+            p.style.animationDelay = `${Math.random()}s`;
+            row.appendChild(p);
+        }
+    }
+
+    switchScreen(id) {
+        document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+    }
+
+    updateDashboard() {
+        const currentW = this.forecast[this.day];
+
+        document.getElementById('disp-day').innerText = `Day ${this.day + 1}`;
+        document.getElementById('disp-smd').innerText = `${this.smd.toFixed(1)} mm`;
+        document.getElementById('disp-loss').innerText = `${this.totalYieldLoss.toFixed(1)}%`;
+        
+        // Display TODAY's known info
+        document.getElementById('todays-weather').innerText = `Today's ET: ${currentW.et0}mm | Rain: ${currentW.rain}mm`;
+        
+        // SMD Visual Meter
+        const meter = document.getElementById('smd-meter');
+        meter.max = this.config.criticalSmd * 1.5;
+        meter.value = this.smd;
+
+        // Forecast Strip: ONLY Rain prediction, Hide future ET
+        const strip = document.getElementById('forecast-strip');
+        strip.innerHTML = '';
+        this.forecast.forEach((f, idx) => {
+            const div = document.createElement('div');
+            div.className = `forecast-day ${idx === this.day ? 'current' : ''}`;
+            
+            // If it's a future day, only show Rain Forecast. If passed or current, show actual?
+            // Actually, usually rain forecast is known, ET is estimated.
+            // Requirement: "Player time-steps... player only knows what they are working with today... future ET is not known"
+            // So we show Rain Forecast for all days (assuming perfect forecast for game simplicity)
+            // But hide ET for future days.
+            
+            let etText = "???";
+            if (idx <= this.day) etText = f.et0;
+            
+            if (idx < this.day) div.style.opacity = '0.5';
+            
+            div.innerHTML = `
+                <div>Day ${f.day}</div>
+                <div style="font-size:1.5em">${f.type === 'Rainy' ? '🌧️' : '☀️'}</div>
+                <div style="font-size:0.8em; color:#666">Rain: ${f.rain}</div>
+            `;
+            strip.appendChild(div);
+        });
+    }
+
+    checkConstraints() {
+        const canIrrigate = (this.lastIrrigationDay === -999) || ((this.day - this.lastIrrigationDay) >= this.config.returnPeriod);
+        const msg = document.getElementById('constraint-msg');
+        const slider = document.getElementById('irrigation-slider');
+        const inputContainer = document.getElementById('irrigation-inputs');
+
+        if (!canIrrigate) {
+            msg.style.display = 'block';
+            inputContainer.classList.add('hidden'); // Hide slider, force 0
+            slider.value = 0;
+            this.updateSliderVal();
+        } else {
+            msg.style.display = 'none';
+            inputContainer.classList.remove('hidden');
+        }
+    }
+
+    updateSliderVal() {
+        const val = document.getElementById('irrigation-slider').value;
+        document.getElementById('slider-val').innerText = val;
+    }
+
+    async commitDecision() {
+        // Get Input
+        let irrigAmount = parseFloat(document.getElementById('irrigation-slider').value);
+        
+        // Validate constraints if user tries to hack
+        const canIrrigate = (this.lastIrrigationDay === -999) || ((this.day - this.lastIrrigationDay) >= this.config.returnPeriod);
+        if(!canIrrigate) irrigAmount = 0;
+
+        if (irrigAmount > 0 && irrigAmount < this.config.minApp) {
+            alert(`Minimum application is ${this.config.minApp}mm`);
+            return;
+        }
+
+        // Logic
+        if (irrigAmount > 0) {
+            this.lastIrrigationDay = this.day;
+            this.playerEvents++;
+        }
+        
+        const todayWeather = this.forecast[this.day];
+
+        // Animation Phase
+        await this.playAnimations(todayWeather, irrigAmount);
+
+        // Update Physics
+        const startSmd = this.smd;
+        this.smd = this.smd + todayWeather.et0 - todayWeather.rain - irrigAmount;
+        
+        let drainage = 0;
+        if (this.smd < 0) {
+            drainage = Math.abs(this.smd);
+            this.smd = 0;
+        }
+
+        let dayYieldLoss = 0;
+        if (this.smd > this.config.criticalSmd) {
+            dayYieldLoss = (this.smd - this.config.criticalSmd) * this.config.yieldLossPerUnit;
+        }
+        this.totalYieldLoss += dayYieldLoss;
+
+        // Log History
+        this.history.push({
+            day: this.day + 1,
+            startSmd: startSmd,
+            endSmd: this.smd,
+            rain: todayWeather.rain,
+            et0: todayWeather.et0,
+            irrigation: irrigAmount,
+            drainage: drainage,
+            yieldLoss: dayYieldLoss,
+            status: this.getDayStatus(this.smd, dayYieldLoss, drainage)
+        });
+
+        // Next Day
+        this.day++;
+        if (this.day >= this.config.simDays) {
+            this.endGame();
+        } else {
+            // Reset Inputs
+            document.getElementById('irrigation-slider').value = 0;
+            this.updateSliderVal();
+            this.updateDashboard();
+            this.checkConstraints();
+        }
+    }
+
+    getDayStatus(smd, loss, drainage) {
+        if (loss > 0) return 'status-drought';
+        if (drainage > 0) return 'status-flooded';
+        if (smd < this.config.criticalSmd / 2) return 'status-wet';
+        return 'status-perfect';
+    }
+    
+    getStatusText(status) {
+        if(status === 'status-drought') return "⚠️ Stress";
+        if(status === 'status-flooded') return "🌊 Waste";
+        if(status === 'status-wet') return "💧 Wet";
+        return "✅ Good";
+    }
+
+    playAnimations(weather, irrig) {
+        return new Promise(resolve => {
+            const rainLayer = document.getElementById('rain-layer');
+            const can = document.getElementById('watering-can');
+            const sun = document.getElementById('sun');
+
+            // Weather Anim
+            if (weather.type === 'Rainy') {
+                sun.style.opacity = 0;
+                rainLayer.style.display = 'block';
+                // Create rain drops
+                rainLayer.innerHTML = '';
+                for(let i=0; i<20; i++) {
+                    let d = document.createElement('div');
+                    d.className = 'rain-drop';
+                    d.style.left = Math.random() * 100 + '%';
+                    d.style.animationDelay = Math.random() + 's';
+                    d.style.animationDuration = (0.5 + Math.random()*0.5) + 's';
+                    rainLayer.appendChild(d);
+                }
+            } else {
+                sun.style.opacity = 1;
+                rainLayer.style.display = 'none';
+            }
+
+            // Irrigation Anim
+            if (irrig > 0) {
+                can.style.display = 'block';
+                can.style.animation = 'pour 2s forwards';
+            }
+
+            // Wait for anims
+            setTimeout(() => {
+                can.style.display = 'none';
+                rainLayer.style.display = 'none';
+                sun.style.opacity = 1;
+                resolve();
+            }, 2500);
+        });
+    }
+
+    endGame() {
+        this.switchScreen('results-screen');
+        
+        // Calculate Player Stats
+        const pTotalWater = this.history.reduce((acc, d) => acc + d.irrigation, 0);
+        const pTotalDrain = this.history.reduce((acc, d) => acc + d.drainage, 0);
+        
+        // AI Stats
+        const aiSched = this.aiResult.schedule;
+        const aiYield = this.aiResult.yieldLoss;
+        const aiDrain = this.aiResult.totalDrainage;
+        const aiWater = this.aiResult.totalIrrigation;
+        const aiEvents = this.aiResult.numEvents;
+
+        // Render Top Cards
+        document.getElementById('p-water').innerText = pTotalWater.toFixed(1);
+        document.getElementById('p-events').innerText = this.playerEvents;
+        document.getElementById('p-drain').innerText = pTotalDrain.toFixed(1);
+        document.getElementById('p-yield').innerText = this.totalYieldLoss.toFixed(1);
+        
+        document.getElementById('ai-water').innerText = aiWater.toFixed(1);
+        document.getElementById('ai-events').innerText = aiEvents;
+        document.getElementById('ai-drain').innerText = aiDrain.toFixed(1);
+        document.getElementById('ai-yield').innerText = aiYield.toFixed(1);
+
+        // Render Table
+        const tbody = document.getElementById('results-table-body');
+        tbody.innerHTML = '';
+        
+        // We need to re-simulate AI day by day for the table to get daily SMD
+        let aiSmd = this.config.initialSmd;
+        
+        for (let i = 0; i < this.config.simDays; i++) {
+            const h = this.history[i];
+            const w = this.forecast[i];
+            const aiIrrig = aiSched[i];
+            
+            // AI Step
+            aiSmd = aiSmd + w.et0 - w.rain - aiIrrig;
+            let aiDrainage = 0;
+            if(aiSmd < 0) {
+                 aiDrainage = Math.abs(aiSmd);
+                 aiSmd = 0;
+            }
+            
+            // Calculate AI Yield Loss for status
+            let aiLoss = 0;
+            if (aiSmd > this.config.criticalSmd) {
+                aiLoss = (aiSmd - this.config.criticalSmd) * this.config.yieldLossPerUnit;
+            }
+            
+            const aiStatus = this.getDayStatus(aiSmd, aiLoss, aiDrainage);
+
+            const row = document.createElement('tr');
+            
+            row.innerHTML = `
+                <td>${h.day}</td>
+                <td>
+                    ${w.type === 'Rainy' ? '🌧️' : '☀️'}
+                    <br><span style="font-size:0.8em">ET:${w.et0} Rain:${w.rain}</span>
+                </td>
+                <td>
+                    <div>Irrig: <b>${h.irrigation}</b></div>
+                    <div style="font-size:0.8em">End SMD: ${h.endSmd.toFixed(1)}</div>
+                </td>
+                <td class="${h.status}">${this.getStatusText(h.status)}</td>
+                <td>
+                    <div>Irrig: <b>${aiIrrig}</b></div>
+                    <div style="font-size:0.8em">End SMD: ${aiSmd.toFixed(1)}</div>
+                </td>
+                <td class="${aiStatus}">${this.getStatusText(aiStatus)}</td>
+            `;
+            tbody.appendChild(row);
+        }
+    }
+}
+
+const game = new Game();
+
+</script>
+
+
+
+
+
+</div>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
