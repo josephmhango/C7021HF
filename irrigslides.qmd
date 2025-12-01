@@ -264,5 +264,8 @@ flowchart LR
     style Engine fill:#f0f4f8,stroke:#90a4ae,stroke-width:2px,color:#37474f,rx:10,ry:10
     style Output fill:#f0f4f8,stroke:#90a4ae,stroke-width:2px,color:#37474f,rx:10,ry:10
 ```
+## Irrigation Scheduler
+
+<iframe src="https://josephmhango.github.io/C7021HF/game.html" width="100%" height="600px" style="border: 2px solid #ccc; border-radius: 8px;"></iframe>
 
 
