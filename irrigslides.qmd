@@ -50,7 +50,7 @@ While a farmer might answer this based on experience, a digital module approache
 :::
 
 ::: {.column width="45%"}
-![](water.png){width="85%"}
+![](img/water.png){width="85%"}
 :::
 :::
 
@@ -72,7 +72,7 @@ the amount of water needed to refill the root zone back to field capacity.
 :::
 
 ::: {.column width="45%"}
-![](waterbalance.png){width="85%"}
+![](img/waterbalance.png){width="85%"}
 :::
 :::
 
@@ -140,7 +140,7 @@ $$ ET_{crop} = ET_0 \times K_c $$
 - *Logic*: For weather, we use forecasters like meteomatic
 
 ::: {.full-width}
-![](groundcover.png){width="80%"}
+![](img/groundcover.png){width="80%"}
 :::
 
 ## Simulation: The Water Balance Table
@@ -179,7 +179,7 @@ The optimizer must obey physical reality:
 3.  **Return Period**: Equipment cycle time (e.g., 4 days).
 
 ::: {.full-width}
-![](raingun.png){width="80%"}
+![](img/raingun.png){width="80%"}
 :::
 
 
